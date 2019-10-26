@@ -3,11 +3,12 @@ from mqtt2 import *
 import os
 import time
 import json
+import configparser
 
 def start():
     try:
-        os.remove("list_of_devices_currently_active.txt")
-        os.remove("laserConfig.json")
+        os.remove("list_of_device(s)_currently_active.txt")
+        os.remove("laser.ini")
         print("Awaiting device(s) to be activated")
     except:
         print("Awaiting device(s) to be activated")
@@ -48,12 +49,20 @@ def readFile(fname):
         print("No device(s) added yet")
 readFile("list_of_device(s)_currently_active.txt")
 
-client = embedded()
-client.run()
+# print("Connected to broker")
+# time.sleep(1)
+# client.subscribe("microscope/light_sheet_microscope/UI/laser/#")
+# if os.path.exists:
+#     parser = configparser.ConfigParser()
+#     parser.read("laser.ini")
 
-# client.loop_start()
-print("Connected to broker")
-time.sleep(1)
-print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-client.subscribe("microscope/light_sheet_microscope/UI/laser")
+#     try:
+#         subscriptions = dict(parser.items("Subscriptions"))
+#         print("Subscribing to topics", subscriptions)
+#         client.subscribe(subscriptions)
+#     except:
+#         pass
+# else:
+#     pass
+
 client.loop_forever()

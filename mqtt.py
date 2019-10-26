@@ -16,4 +16,4 @@ class device(mqtt.Client):
         m_in = json.loads(m_decode)
 
     def run(self):
-        self.connect("localhost", 1883, 60)
+        self.connect("broker.hivemq.com", 1883, 60)

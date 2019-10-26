@@ -3,9 +3,8 @@ import asyncio
 from actorio import Actor, Message, DataMessage, ask, EndMainLoop, Reference
 
 class Cameras(Actor):
-    # Here we override the handle_message method to send a `DataMessage` with the data "Hello World!".
     async def handle_message(self, message: Message):
-        print("Camera")
+        print("Cameras")
         await asyncio.sleep(2)
         print("Unitialised")
         await asyncio.sleep(2)

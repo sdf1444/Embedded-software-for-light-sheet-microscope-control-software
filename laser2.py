@@ -330,23 +330,24 @@ class Ui_Laser(object):
             client = device()
             client.run()
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "445nm", "intensity": textboxValue, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/445nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/445nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/445nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/445nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "445nm", "intensity": textboxValue, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
             
             print("Intensity: " + textboxValue)
 
-            f = open("laser.ini", "a+")
             config = configparser.RawConfigParser()
+
+            f = open("laser.ini", "w")
             config.add_section("445nm")
             config.set("445nm", "intensity", textboxValue)
             config.add_section("Subscriptions")
-            config.set("Subscriptions", "445nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '445nm', 'intensity': textboxValue, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "445nm", "microscope/light_sheet_microscope/UI/laser/445nm")
             config.write(f)
         
         else:
@@ -359,26 +360,28 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "445nm", "intensity": textboxValue, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/445nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/445nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/445nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/445nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "445nm", "intensity": textboxValue, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue)
             
-            f = open("laser.ini", "a+")
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
             config.add_section("445nm")
             config.set("445nm", "intensity", textboxValue)
-            config.set("Subscriptions", "445nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '445nm', 'intensity': textboxValue, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "445nm", "microscope/light_sheet_microscope/UI/laser/445nm")
             config.write(f)
         	            
     def printValue2(self):
-        if not os.path.exists("laserConfig.json"):
+        if not os.path.exists("laser.ini"):
             textboxValue2 = self.lineEdit.text()
             if self.lineEdit_2.text() == "":
                 self.verticalSlider_2.setValue(0)
@@ -389,22 +392,24 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "488nm", "intensity": textboxValue2, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/488nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/488nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/488nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/488nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "488nm", "intensity": textboxValue2, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue2)
 
-            f = open("laser.ini", "a+")
             config = configparser.RawConfigParser()
+
+            f = open("laser.ini", "w")
             config.add_section("488nm")
             config.set("488nm", "intensity", textboxValue2)
-            config.set("Subscriptions", "488nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '488nm', 'intensity': textboxValue2, 'cmd': 'set intensity of laser'}}")
+            config.add_section("Subscriptions")
+            config.set("Subscriptions", "488nm", "microscope/light_sheet_microscope/UI/laser/488nm")
             config.write(f)
         
         else:
@@ -417,26 +422,29 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "488nm", "intensity": textboxValue2, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/488nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/488nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/488nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/488nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "488nm", "intensity": textboxValue2, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue2)
 
-            f = open("laser.ini", "a+")
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
+            
             config.add_section("488nm")
             config.set("488nm", "intensity", textboxValue2)
-            config.set("Subscriptions", "488nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '488nm', 'intensity': textboxValue2, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "488nm", "microscope/light_sheet_microscope/UI/laser/488nm")
             config.write(f)
 
     def printValue3(self):
-        if not os.path.exists("laserConfig.json"):
+        if not os.path.exists("laser.ini"):
             textboxValue3 = self.lineEdit_3.text()
             if self.lineEdit_3.text() == "":
                 self.verticalSlider_3.setValue(0)
@@ -447,22 +455,24 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/515nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/515nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/515nm")
             client.publish("microscope/light_sheet_microscope/UI/515nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "515nm", "intensity": textboxValue3, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue3)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+
+            f = open("laser.ini", "w")
             config.add_section("515nm")
             config.set("515nm", "intensity", textboxValue3)
-            config.set("Subscriptions", "515nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '515nm', 'intensity': textboxValue3, 'cmd': 'set intensity of laser'}}")
+            config.add_section("Subscriptions")
+            config.set("Subscriptions", "515nm", "microscope/light_sheet_microscope/UI/laser/515nm")
             config.write(f)
         
         else:
@@ -475,26 +485,28 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "515nm", "intensity": textboxValue3, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/515nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/515nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/515nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/515nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "515nm", "intensity": textboxValue3, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue3)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
             config.add_section("515nm")
             config.set("515nm", "intensity", textboxValue3)
-            config.set("Subscriptions", "515nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '515nm', 'intensity': textboxValue3, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "515nm", "microscope/light_sheet_microscope/UI/laser/515nm")
             config.write(f)
 
     def printValue4(self):
-        if not os.path.exists("laserConfig.json"):
+        if not os.path.exists("laser.ini"):
             textboxValue4 = self.lineEdit_4.text()
             if self.lineEdit_4.text() == "":
                 self.verticalSlider_4.setValue(0)
@@ -505,22 +517,24 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "561nm", "intensity": textboxValue4, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/561nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/561nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/561nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/561nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "561nm", "intensity": textboxValue4, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue4)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+
+            f = open("laser.ini", "w")
             config.add_section("561nm")
             config.set("561nm", "intensity", textboxValue4)
-            config.set("Subscriptions", "561nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '561nm', 'intensity': textboxValue3, 'cmd': 'set intensity of laser'}}")
+            config.add_section("Subscriptions")
+            config.set("Subscriptions", "561nm", "microscope/light_sheet_microscope/UI/laser/561nm")
             config.write(f)          
         
         else:
@@ -533,26 +547,28 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "561nm", "intensity": textboxValue4, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/561nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/561nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/561nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/561nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "561nm", "intensity": textboxValue4, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue4)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
             config.add_section("561nm")
             config.set("561nm", "intensity", textboxValue4)
-            config.set("Subscriptions", "561nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '561nm', 'intensity': textboxValue4, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "561nm", "microscope/light_sheet_microscope/UI/laser/561nm")
             config.write(f)
 
     def printValue5(self):
-        if not os.path.exists("laserConfig.json"):
+        if not os.path.exists("laser.ini"):
             textboxValue5 = self.lineEdit_5.text()
             if self.lineEdit_5.text() == "":
                 self.verticalSlider_5.setValue(0)
@@ -563,22 +579,24 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "594nm", "intensity": textboxValue5, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/594nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/594nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/594nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/594nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "594nm", "intensity": textboxValue5, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue5)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+
+            f = open("laser.ini", "w")
             config.add_section("594nm")
             config.set("594nm", "intensity", textboxValue5)
-            config.set("Subscriptions", "594nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '594nm', 'intensity': textboxValue4, 'cmd': 'set intensity of laser'}}")
+            config.add_section("Subscriptions")
+            config.set("Subscriptions", "594nm", "microscope/light_sheet_microscope/UI/laser/594nm")
             config.write(f)
         
         else:
@@ -591,26 +609,28 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "594nm", "intensity": textboxValue5, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/594nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/594nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/594nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/594nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "594nm", "intensity": textboxValue5, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
             
             print("Intensity: " + textboxValue5)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
             config.add_section("594nm")
             config.set("594nm", "intensity", textboxValue5)
-            config.set("Subscriptions", "594nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '594nm', 'intensity': textboxValue5, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "594nm", "microscope/light_sheet_microscope/UI/laser/594nm")
             config.write(f)
 
     def printValue6(self):
-        if not os.path.exists("laserConfig.json"):
+        if not os.path.exists("laser.ini"):
             textboxValue6 = self.lineEdit_6.text()
             if self.lineEdit_6.text() == "":
                 self.verticalSlider_6.setValue(0)
@@ -621,22 +641,24 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "638nm", "intensity": textboxValue6, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/638nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/638nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/638nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/638nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "638nm", "intensity": textboxValue6, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
 
             print("Intensity: " + textboxValue6)
-
-            f = open("laser.ini", "a+")
+            
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
             config.add_section("638nm")
             config.set("638nm", "intensity", textboxValue6)
-            config.set("Subscriptions", "638nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '638nm', 'intensity': textboxValue6, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "638nm", "microscope/light_sheet_microscope/UI/laser/638nm")
             config.write(f)
         
         else:
@@ -649,22 +671,24 @@ class Ui_Laser(object):
             client.run()
 
             client.loop_start()
-            print("Connected to broker")
+            print("\n" + "Connected to broker")
             time.sleep(1)
-            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.subscribe("microscope/light_sheet_microscope/UI/laser")
-            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser")
-            client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "638nm", "intensity": textboxValue6, "cmd": "set intensity of laser"}}, indent=2))
+            print("Subscribing to topic", "microscope/light_sheet_microscope/UI/laser/638nm")
+            client.subscribe("microscope/light_sheet_microscope/UI/laser/638nm")
+            print("Publishing message to topic", "microscope/light_sheet_microscope/UI/laser/638nm")
+            client.publish("microscope/light_sheet_microscope/UI/laser/638nm", json.dumps({"type": "device", "payload":{"name": "laser", "wavelength": "638nm", "intensity": textboxValue6, "cmd": "set intensity of laser"}}, indent=2))
             time.sleep(1)
             client.loop_stop()
             
             print("Intensity: " + textboxValue6) 
             
-            f = open("laser.ini", "a+")
             config = configparser.RawConfigParser()
+            config.read("laser.ini")
+
+            f = open("laser.ini", "w")
             config.add_section("638nm")
             config.set("638nm", "intensity", textboxValue6)
-            config.set("Subscriptions", "638nm", "{'type': 'device', 'payload':{'name': 'laser', 'wavelength': '638nm', 'intensity': textboxValue6, 'cmd': 'set intensity of laser'}}")
+            config.set("Subscriptions", "638nm", "microscope/light_sheet_microscope/UI/laser/638nm")
             config.write(f)
 
     # def printValue7(self):
