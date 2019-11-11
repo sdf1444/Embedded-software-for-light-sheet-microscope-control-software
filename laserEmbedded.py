@@ -6,17 +6,17 @@ from mqtt2 import *
 class Laser(Actor):
     async def handle_message(self, message: Message):
         print("Laser")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         print("Unitialised")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         print("Initialising")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         print("Initialised")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         print("Configuring")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         print("Configured")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(2)
         await message.sender.tell(DataMessage(data="Hello World Im a laser!" + "\n", sender=self))
 async def main():
     # Let's create an instance of a Greeter actor and start it. 

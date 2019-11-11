@@ -34,27 +34,17 @@ class MainWindow(QtWidgets.QMainWindow):
         client.subscribe("microscope/light_sheet_microscope/UI/devices")
         print("Publishing message to topic", "microscope/light_sheet_microscope/UI/devices")
         client.publish("microscope/light_sheet_microscope/UI/devices", json.dumps({"type": "system", "payload":{"cmd": "get all devices"}}, indent=2))
-        time.sleep(1)
-        
-        pybutton = QPushButton('Add device', self)
-
-        pybutton.clicked.connect(self.importbutton)
-
-        pybutton.move(100, 400)
-        pybutton.resize(150, 32)
-
-        self.combo = QComboBox(self)        
-        self.combo.move(100,350)
-        self.combo.resize(100, 32)
+        time.sleep(1)                        
 
         menubar = self.menuBar()
-        devicesMenu = menubar.addMenu("Devices")
+        fileMenu = menubar.addMenu('Devices')
 
         def readFile(fname):
             try:
                 with open(fname, "r") as f:
                     for item in f:
-                        self.combo.addItem(item, self.importbutton)
+                        deviceImport = fileMenu.addAction(item)
+                        deviceImport.triggered.connect(self.importbutton)       
             except:
                 print("No devices active")
         readFile("list_of_device(s)_currently_active.txt") 
@@ -73,7 +63,8 @@ class MainWindow(QtWidgets.QMainWindow):
             client.publish("microscope/light_sheet_microscope/UI/add device", json.dumps({"type": "system", "payload":{"cmd": "init device panel"}}, indent=2))
             time.sleep(1)
             client.loop_stop()        
-            self.fileName_UI = self.combo.currentText()
+            sender = self.sender()        
+            self.fileName_UI = sender.text()
             self.loadGUI()
             print("Device panel initialised" + "\n")
         else:
@@ -90,7 +81,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 client.publish("microscope/light_sheet_microscope/UI/laser", json.dumps({"type": "device", "payload":{"name": "laser", "cmd": "set config"}}, indent=2))
                 time.sleep(1)
                 client.loop_stop()
-                self.fileName_UI = self.combo.currentText()
+                sender = self.sender()        
+                self.fileName_UI = sender.text()
                 self.loadGUI()
                 print("Laser config set" + "\n")
 

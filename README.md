@@ -1,5 +1,3 @@
-# Embedded-software-for-light-sheet-microscope-control-software
-
 1) Run embedded.py
 2) Input a device name. At the momement only use laser, so type in laser.
 3) Once laser actor launched, run gui.py.

@@ -4,6 +4,7 @@ import os
 import time
 import json
 import configparser
+from threading import Thread
 
 def start():
     try:
@@ -36,7 +37,6 @@ def active_devices():
     with open("list_of_device(s)_currently_active.txt", "a+") as myfile:
         for item in devices:
             myfile.write(item + "\n")
-
 active_devices()
 
 def readFile(fname):    
