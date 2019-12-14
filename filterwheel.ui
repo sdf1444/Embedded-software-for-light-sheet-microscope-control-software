@@ -15,48 +15,46 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="1" rowspan="2">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>Link</string>
-      </property>
+    <item row="2" column="0" rowspan="2">
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </item>
      </widget>
     </item>
-    <item row="2" column="0" rowspan="3">
-     <widget class="QComboBox" name="comboBox"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QCheckBox" name="checkBox">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
+    <item row="4" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Left magnification changer</string>
       </property>
      </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QCheckBox" name="checkBox_2">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0" rowspan="2">
-     <widget class="QComboBox" name="comboBox_3"/>
-    </item>
-    <item row="6" column="2" rowspan="2">
-     <widget class="QComboBox" name="comboBox_4"/>
     </item>
     <item row="1" column="2">
      <widget class="QLabel" name="label_2">
@@ -65,15 +63,37 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="2">
+    <item row="5" column="0" rowspan="2">
+     <widget class="QComboBox" name="comboBox_3">
+      <item>
+       <property name="text">
+        <string>22.2x</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="5" column="2" rowspan="2">
+     <widget class="QComboBox" name="comboBox_4">
+      <item>
+       <property name="text">
+        <string>22.2x</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="4" column="2">
      <widget class="QLabel" name="label_4">
       <property name="text">
        <string>Right magnification changer</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="2" rowspan="3">
-     <widget class="QComboBox" name="comboBox_2"/>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Left filter wheel</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="pushButton">
@@ -88,18 +108,71 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
+    <item row="5" column="1" rowspan="2">
+     <widget class="QCheckBox" name="checkBox_2">
       <property name="text">
-       <string>Left filter wheel</string>
+       <string/>
       </property>
      </widget>
     </item>
-    <item row="5" column="1" rowspan="2">
+    <item row="1" column="1">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>link</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" rowspan="2">
+     <widget class="QCheckBox" name="checkBox">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
      <widget class="QLabel" name="label_6">
       <property name="text">
-       <string>Link</string>
+       <string>link</string>
       </property>
+     </widget>
+    </item>
+    <item row="2" column="2" rowspan="2">
+     <widget class="QComboBox" name="comboBox_2">
+      <item>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
      </widget>
     </item>
    </layout>

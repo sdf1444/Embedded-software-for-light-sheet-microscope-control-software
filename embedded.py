@@ -4,65 +4,54 @@ import os
 import time
 import json
 import configparser
-from threading import Thread
 
-def start():
-    try:
-        os.remove("list_of_device(s)_currently_active.txt")
-        os.remove("laser.ini")
-        print("Awaiting device(s) to be activated")
-    except:
-        print("Awaiting device(s) to be activated")
-start()
-	
-devices = list(map(str,input("Device(s) to be activated: ").split(",")))
+class embedded:
+    def start():
+        try:
+            os.remove("list_of_device(s)_currently_active.txt")
+            os.remove("laser.ini")
+            print("Activating device(s)")
+        except:
+            print("Activating devices(s)")
 
-client = embedded()
-client.run()
+        config = configparser.RawConfigParser()
+        config.read("config.ini")
+        devices = config.sections()
 
-client.loop_start()
-print("Connected to broker")
-time.sleep(1)
-print("Subscribing to topic", "microscope/light_sheet_microscope/UI")
-client.subscribe("microscope/light_sheet_microscope/UI")
-print("Publishing message to topic", "microscope/light_sheet_microscope/UI")
-client.publish("microscope/light_sheet_microscope/UI", json.dumps({"type": "system", "payload":{"name": devices, "cmd": "activating device(s)"}}, indent=2))
-time.sleep(1)
+        global client
+        client = embedded()
+        client.run()
 
-def active_devices():
-    for item in devices:
-        device = (item + "Embedded")
-        deviceImport = __import__(device)
+        client.loop_start()
+        print("Connected to broker")
+        time.sleep(1)
+        print("Subscribing to topic", "microscope/light_sheet_microscope/UI")
+        client.subscribe("microscope/light_sheet_microscope/UI")
+        print("Publishing message to topic", "microscope/light_sheet_microscope/UI")
+        client.publish("microscope/light_sheet_microscope/UI", json.dumps({"type": "system", "payload":{"name": devices, "cmd": "activating device(s)"}}, indent=2))
+        time.sleep(1)
+        return devices
 
-    with open("list_of_device(s)_currently_active.txt", "a+") as myfile:
+    def import_devices(devices):
         for item in devices:
-            myfile.write(item + "\n")
-active_devices()
+            device = (item + "Embedded")
+            deviceImport = __import__(device)
 
-def readFile(fname):    
-    print("List of device(s) currently active:")
-    try:
-        with open(fname, "r") as f:
-            for item in f:
-                print(item.rstrip("\n"))
-    except:
-        print("No device(s) added yet")
-readFile("list_of_device(s)_currently_active.txt")
+        with open("list_of_device(s)_currently_active.txt", "a+") as myfile:
+            for item in devices:
+                myfile.write(item + "\n")
 
-# print("Connected to broker")
-# time.sleep(1)
-# client.subscribe("microscope/light_sheet_microscope/UI/laser/#")
-# if os.path.exists:
-#     parser = configparser.ConfigParser()
-#     parser.read("laser.ini")
+    devices = start()
+    import_devices(devices)
 
-#     try:
-#         subscriptions = dict(parser.items("Subscriptions"))
-#         print("Subscribing to topics", subscriptions)
-#         client.subscribe(subscriptions)
-#     except:
-#         pass
-# else:
-#     pass
+    def readFile(fname):    
+        print("List of device(s) currently active:")
+        try:
+            with open(fname, "r") as f:
+                for item in f:
+                    print(item.rstrip("\n"))
+        except:
+            print("No device(s) added yet")
+    readFile("list_of_device(s)_currently_active.txt")
 
 client.loop_forever()

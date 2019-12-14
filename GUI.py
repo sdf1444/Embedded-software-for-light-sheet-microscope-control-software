@@ -37,7 +37,19 @@ class MainWindow(QtWidgets.QMainWindow):
         time.sleep(1)                        
 
         menubar = self.menuBar()
-        fileMenu = menubar.addMenu('Devices')
+        fileMenu = menubar.addMenu("Devices")
+        startMenu = menubar.addMenu("Start")
+        stopMenu = menubar.addMenu("Stop")
+
+        # startMenu.triggered.connect(self.start)
+
+        # pybutton = QPushButton("Run", self)
+        # pybutton.resize(25,15)
+        # pybutton.move(0,20)
+
+        # pybutton2 = QPushButton("Stop", self)   
+        # pybutton2.resize(25,18)
+        # pybutton2.move(40,20)
 
         def readFile(fname):
             try:

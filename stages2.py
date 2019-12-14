@@ -80,6 +80,7 @@ class Ui_Stage(object):
         self.gridLayout.addWidget(self.lineEdit_7, 3, 1, 1, 1)
         self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_7.setObjectName("pushButton_7")
+        app.setStyleSheet("self.pushButton7{boder-image:url(90_degrees_counter_clockwise.png);}")
         self.gridLayout.addWidget(self.pushButton_7, 3, 2, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -106,7 +107,6 @@ class Ui_Stage(object):
         self.pushButton_6.setText(_translate("MainWindow", "um"))
         self.label_7.setText(_translate("MainWindow", "R"))
         self.pushButton_7.setText(_translate("MainWindow", "deg"))
-
 
 if __name__ == "__main__":
     import sys
